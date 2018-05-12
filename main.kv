@@ -1,0 +1,847 @@
+<CustomLayout>
+    canvas:
+        Color:
+            rgba: 1,1,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Cargar>
+    name:'cargar'
+    orientation: "vertical"
+    BoxLayout:
+        FloatLayout:
+            Button:
+                background_normal: 'pizap.com15234302397901.jpg'
+                size_hint:1,1
+                pos_hint: {'center_x':0.5, 'center_y': 0.5}
+                on_press: app.root.login()
+
+<Inicio>
+    name: 'inicio'
+    orientation: "vertical"
+    BoxLayout:
+        FloatLayout:
+            AsyncImage:
+                source: 'inicio.jpg'
+                size_hint: 1,1.2
+                pos_hint: {'center_x':0.5, 'center_y': 0.5}
+
+            Button:
+                id: bt_inicio
+                text: 'Inicio'
+                font_size: 23
+                size_hint: .4, .12
+                pos_hint: {'center_x':.2, 'center_y': .12}
+                background_normal:'boton.jpg'
+                on_press:self.parent.parent.parent.validarIni()
+
+            Label:
+                text: 'BIENVENIDO'
+                font_size: 70
+                pos_hint: {'center_x': .58, 'center_y': 0.85}
+
+            Label:
+                text: 'Login: '
+                font_size: 20
+                text_size: self.width+50, self.height+50
+                pos_hint: {'center_x': .84, 'center_y': 1.08}
+
+            TextInput:
+                id: ti_userL
+                hint_text: "Ingresa Login"
+                multiline: False
+                size_hint: .28,.05
+                font_size: 16
+                pos_hint: {'center_x': .61, 'center_y': .57}
+
+            Label:
+                text: 'Password:'
+                font_size: 20
+                text_size: self.width+50, self.height+50
+                pos_hint: {'center_x': .84, 'center_y': .98}
+
+            TextInput:
+                id: ti_passwordL
+                hint_text: "Ingresa Password"
+                multiline: False
+                size_hint: .28,.05
+                font_size: 16
+                pos_hint: {'center_x': .61, 'center_y': .47}
+                password: True
+
+            Button:
+                id: bt_salir
+                text: 'SALIR'
+                size_hint: .06, .07
+                pos_hint: {'center_x':.96, 'center_y': .04}
+                background_normal: 'salir.png'
+                on_press:  app.stop()
+
+
+<ScreenManagement>:
+
+    Cargar:
+    Inicio:
+    PaginaInicial:
+    LabelConfig:
+    CamClick:
+
+<PaginaInicial>:
+    name: 'paginaInicial'
+    BoxLayout:
+        FloatLayout:
+            AsyncImage:
+                source: 'pizap.com15234302397901.jpg'
+                size_hint: 1.1,1
+                pos_hint: {'center_x':.5, 'center_y': .5}
+
+            Button:
+                text: 'MERCANCIA'
+                size_hint: .3, .3
+                pos_hint: {'center_x':.19, 'center_y': .4}
+                background_normal: 'mercancia.png'
+                on_press:app.root.camaraAccion()
+
+            Button:
+                id:tb_proveedores
+                text: 'PROVEEDORES'
+                size_hint: .25, .3
+                pos_hint: {'center_x':.27, 'center_y': .75}
+                background_normal: 'proveedor.png'
+                on_press:app.root.opciones_proveedores()
+
+            Button:
+                text: 'VENTAS'
+                size_hint: .22, .3
+                pos_hint: {'center_x':.7, 'center_y': .75}
+                background_normal: 'ventas.png'
+                on_press:app.root.opciones_ventas()
+
+            Button:
+                text: 'USUARIOS'
+                size_hint: .2, .28
+                pos_hint: {'center_x':.77, 'center_y': .4}
+                background_normal: 'usuarios.png'
+                on_press:app.root.opciones_usuarios()
+
+            Button:
+                id: bt_salir
+                size_hint: .06, .07
+                pos_hint: {'center_x':.94, 'center_y': .07}
+                background_normal: 'salir.png'
+                on_press:  app.root.login()
+
+<LabelConfig>:
+    name: 'labelConfig'
+    id:labelConfig
+    BoxLayout:
+        Accordion:
+            orientation: "horizontal"
+            AccordionItem:
+                id:mercancias
+                title:'MERCANCIAS'
+                background_normal: 'fondo22.jpg'
+                anim_func: 'in_expo'
+                background_selected: 'fondo22.jpg'
+
+                FloatLayout:
+                    AsyncImage:
+                        source: 'fondo1.jpg'
+                        size_hint: 1.5,1.5
+                        pos_hint: {'center_x':0.5, 'center_y': 0.5}
+
+                    Button:
+                        id:bt_catalogo
+                        size_hint: .06, .09
+                        text: 'Cat'
+                        pos_hint: {'center_x':.95, 'center_y': .93}
+                        background_normal: 'catalogo.png'
+
+                    ToggleButton:
+                        id:bt_actualizar1
+                        size_hint: .06, .09
+                        text: 'Act'
+                        pos_hint: {'center_x':.89, 'center_y': .93}
+                        background_normal: 'update.png'
+
+                    ToggleButton:
+                        id:bt_borrar1
+                        size_hint: .06, .09
+                        text: 'Bor'
+                        pos_hint: {'center_x':.83, 'center_y': .93}
+                        background_normal: 'delete.png'
+
+                    ToggleButton:
+                        id:bt_insertar1
+                        size_hint: .06, .09
+                        text: 'Ins'
+                        pos_hint: {'center_x':.77, 'center_y': .93}
+                        background_normal: 'insert.png'
+
+                    Button:
+                        id: bt_inicio
+                        size_hint: .08, .07
+                        pos_hint: {'center_x':.94, 'center_y': .07}
+                        background_normal: 'inicio.png'
+                        on_press: app.root.menuP()
+
+                    Image:
+                        source: 'mercancia.png'
+                        size_hint: .25, .25
+                        pos_hint: {'center_x':.5, 'center_y':.82}
+
+                    Button:
+                        id: bt_aceptar
+                        size_hint: .07, .1
+                        pos_hint: {'center_x':.53, 'center_y': .12}
+                        background_normal: 'aceptar.png'
+                        on_press: self.parent.parent.parent.parent.parent.parent.parent.parent.validar1()
+                        disabled:False if bt_insertar1.state=='down' or bt_borrar1.state=='down' or bt_actualizar1.state=='down' else True
+
+                    Button:
+                        id: bt_cancelar
+                        size_hint: .07, .09
+                        pos_hint: {'center_x':.71, 'center_y': .12}
+                        background_normal: 'cancelar.png'
+                        disabled:False if bt_insertar1.state=='down' or bt_borrar1.state=='down' or bt_actualizar1.state=='down' else True
+                        on_press: self.parent.parent.parent.parent.parent.parent.parent.parent.limpiar1()
+
+                    Label:
+                        text: "Nombre: "
+                        font_size: 18
+                        color: 0,0,0,3
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .6, 'center_y': 1.15}
+
+                    Spinner:
+                        id: sp_nombreM
+                        text: "Ingresa Nombre"
+                        values:("Ingresa Nombre","1","2","3")
+                        background_color:1, 1, 1, 3
+                        size_hint: .25,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .32, 'center_y': .63}
+                        disabled:True if bt_insertar1.state=='down' else False
+
+                    TextInput:
+                        id: ti_nombreM
+                        hint_text: "Ingresa Nombre"
+                        multiline: False
+                        background_color:1, 1, 1, 3
+                        size_hint: .25,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .32, 'center_y': .63}
+                        disabled:False if bt_insertar1.state=='down' else True
+
+                    Label:
+                        text: "Largo: "
+                        color: 0,0,0,1
+                        font_size: 18
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .6, 'center_y': 1.09}
+
+                    TextInput:
+                        id: ti_largo
+                        hint_text: "Ingresa Largo"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .32, 'center_y': .57}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+                    Label:
+                        text: "Ancho: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .6, 'center_y': 1.03}
+
+                    TextInput:
+                        id: ti_ancho
+                        hint_text: "Ingresa Ancho"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .32, 'center_y': .51}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+                    Label:
+                        text: "Peso: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': 1.06, 'center_y': 1.15}
+
+                    TextInput:
+                        id: ti_peso
+                        hint_text: "Ingresa Peso"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .8, 'center_y': .63}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+                    Label:
+                        text: "Costo: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': 1.06, 'center_y': 1.09}
+
+                    TextInput:
+                        id: ti_costo
+                        hint_text: "Ingresa Costo"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .8, 'center_y': .57}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+
+                    Label:
+                        text: "Precio Min: "
+                        font_size: 18
+                        color: 0,0,0,3
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': 1.06, 'center_y': 1.03}
+
+                    TextInput:
+                        id: ti_precioMin
+                        hint_text: "Ingresa Precio Min"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .8, 'center_y': .51}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+                    Label:
+                        text: "Precio Opt: "
+                        color: 0,0,0,1
+                        font_size: 18
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': 1.06, 'center_y': .97}
+
+                    TextInput:
+                        id: ti_precioOpt
+                        hint_text: "Ingresa Precio Opt"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .8, 'center_y': .45}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+                    Label:
+                        text: "Existencias: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': 1.06, 'center_y': .91}
+
+                    TextInput:
+                        id: ti_existencias
+                        hint_text: "Ingresa Existencias"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .8, 'center_y': .39}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+                    Label:
+                        text: "Proveedor: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x':  1.06, 'center_y': .85}
+
+                    Spinner:
+                        id: sp_proveedor
+                        text: "Elige Proveedor"
+                        values:("Elige Proveedor","1","2","3")
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .8, 'center_y': .33}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+                    Label:
+                        text: "Tipo: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': 1.06, 'center_y': .79}
+
+                    Spinner:
+                        id: sp_tipo
+                        text: "Elige Tipo"
+                        values:("Elige Tipo","1. Antigüedades","2. Artesanias")
+                        color: 0,0,0,1
+                        size_hint: .25,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .8, 'center_y': .27}
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+                    Button:
+                        id: bt_foto
+                        size_hint: .33, .4
+                        pos_hint: {'center_x':.27, 'center_y': .25}
+                        background_normal: 'logos.png'
+                        background_disabled: 'logos.png'
+                        background_disabled_down: 'logos.png'
+                        on_press:app.root.camaraAccion()
+                        disabled:False if bt_insertar1.state=='down'or bt_actualizar1.state=='down' else True
+
+            AccordionItem:
+                id:proveedores
+                title:'PROVEEDORES'
+                background_normal: 'fondo22.jpg'
+                anim_func: 'in_expo'
+                background_selected: 'fondo22.jpg'
+                FloatLayout:
+                    AsyncImage:
+                        source: 'fondo1.jpg'
+                        size_hint: 2,1.5
+                        pos_hint: {'center_x':0.5, 'center_y': 0.5}
+
+                    Button:
+                        id:bt_catalogo2
+                        size_hint: .06, .09
+                        text: 'Cat'
+                        pos_hint: {'center_x':.95, 'center_y': .93}
+                        background_normal: 'catalogo.png'
+
+                    ToggleButton:
+                        id:bt_actualizar2
+                        size_hint: .06, .09
+                        text: 'Act'
+                        pos_hint: {'center_x':.89, 'center_y': .93}
+                        background_normal: 'update.png'
+
+                    ToggleButton:
+                        id:bt_borrar2
+                        size_hint: .06, .09
+                        text: 'Bor'
+                        pos_hint: {'center_x':.83, 'center_y': .93}
+                        background_normal: 'delete.png'
+
+                    ToggleButton:
+                        id:bt_insertar2
+                        size_hint: .06, .09
+                        text: 'Ins'
+                        pos_hint: {'center_x':.77, 'center_y': .93}
+                        background_normal: 'insert.png'
+
+                    Button:
+                        id: bt_inicio
+                        size_hint: .08, .07
+                        pos_hint: {'center_x':.94, 'center_y': .07}
+                        background_normal: 'inicio.png'
+                        on_press: app.root.menuP()
+
+                    Image:
+                        source: 'proveedor.png'
+                        size_hint: .3, .3
+                        pos_hint: {'center_x':.5, 'center_y':.78}
+
+                    Button:
+                        id: bt_aceptar
+                        size_hint: .07, .1
+                        pos_hint: {'center_x':.35, 'center_y': .14}
+                        background_normal: 'aceptar.png'
+                        on_press: self.parent.parent.parent.parent.parent.parent.parent.parent.validar2()
+                        disabled:False if bt_insertar2.state=='down' or bt_borrar2.state=='down' or bt_actualizar2.state=='down' else True
+
+                    Button:
+                        id: bt_cancelar
+                        size_hint: .07, .09
+                        pos_hint: {'center_x':.55, 'center_y': .14}
+                        background_normal: 'cancelar.png'
+                        disabled:False if bt_insertar2.state=='down' or bt_borrar2.state=='down' or bt_actualizar2.state=='down' else True
+                        on_press: self.parent.parent.parent.parent.parent.parent.parent.parent.limpiar2()
+
+                    Label:
+                        text: "Nombre: "
+                        font_size: 18
+                        color: 0,0,0,3
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': 1.05}
+
+                    Spinner:
+                        id: proveedor
+                        text: "Ingresa Provedor"
+                        values:("Ingresa Proveedor","1","2","3")
+                        background_color:1, 1, 1, 3
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .53}
+                        disabled:True if bt_insertar2.state=='down' else False
+
+                    TextInput:
+                        id: ti_nombreP
+                        hint_text: "Ingresa Provedor"
+                        multiline: False
+                        background_color:1, 1, 1, 3
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .53}
+                        disabled:False if bt_insertar2.state=='down' else True
+
+                    Label:
+                        text: "Dirección: "
+                        color: 0,0,0,1
+                        font_size: 18
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': .97}
+
+                    TextInput:
+                        id: ti_direccion
+                        hint_text: "Ingresa Dirección"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .45}
+                        disabled:False if bt_insertar2.state=='down'or bt_actualizar2.state=='down' else True
+
+                    Label:
+                        text: "Teléfono: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': .89}
+
+                    TextInput:
+                        id: ti_telefono
+                        hint_text: "Ingresa Teléfono"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .6, 'center_y': .37}
+                        disabled:False if bt_insertar2.state=='down'or bt_actualizar2.state=='down' else True
+
+                    Label:
+                        text: "Referencias: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': .81}
+
+                    TextInput:
+                        id: ti_referencias
+                        hint_text: "Ingresa Referencias"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .29}
+                        disabled:False if bt_insertar2.state=='down'or bt_actualizar2.state=='down' else True
+
+
+            AccordionItem:
+                title:'VENTAS'
+                background_normal: 'fondo22.jpg'
+                anim_func: 'in_expo'
+                background_selected: 'fondo22.jpg'
+
+                FloatLayout:
+                    AsyncImage:
+                        source: 'fondo1.jpg'
+                        size_hint: 2,1.5
+                        pos_hint: {'center_x':0.5, 'center_y': 0.5}
+
+                    Button:
+                        id:bt_catalogo3
+                        size_hint: .06, .09
+                        text: 'Cat'
+                        pos_hint: {'center_x':.95, 'center_y': .93}
+                        background_normal: 'catalogo.png'
+
+                    ToggleButton:
+                        id:bt_insertar3
+                        size_hint: .06, .09
+                        text: 'Ins'
+                        pos_hint: {'center_x':.89, 'center_y': .93}
+                        background_normal: 'insert.png'
+
+                    Button:
+                        id: bt_inicio
+                        size_hint: .08, .07
+                        pos_hint: {'center_x':.94, 'center_y': .07}
+                        background_normal: 'inicio.png'
+                        on_press: app.root.menuP()
+
+                    Image:
+                        source: 'ventas.png'
+                        size_hint: .3, .3
+                        pos_hint: {'center_x':.5, 'center_y':.78}
+
+                    Button:
+                        id: bt_aceptar
+                        size_hint: .07, .1
+                        pos_hint: {'center_x':.35, 'center_y': .14}
+                        background_normal: 'aceptar.png'
+                        on_press: self.parent.parent.parent.parent.parent.parent.parent.parent.validar3()
+                        disabled:False if bt_insertar3.state=='down'else True
+
+                    Button:
+                        id: bt_cancelar
+                        size_hint: .07, .09
+                        pos_hint: {'center_x':.55, 'center_y': .14}
+                        background_normal: 'cancelar.png'
+                        disabled:False if bt_insertar3.state=='down' else True
+                        on_press: self.parent.parent.parent.parent.parent.parent.parent.parent.limpiar3()
+
+                    Label:
+                        text: "Producto: "
+                        font_size: 18
+                        color: 0,0,0,3
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': 1.05}
+
+                    Spinner:
+                        id:producto
+                        text: "Ingresa Producto"
+                        values:("Ingresa Producto","1","2","3")
+                        background_color:1, 1, 1, 3
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .53}
+                        disabled:True if bt_insertar3.state=='down' else False
+
+                    Label:
+                        text: "Cantidad: "
+                        color: 0,0,0,1
+                        font_size: 18
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': .97}
+
+                    TextInput:
+                        id: ti_cantidad
+                        hint_text: "Ingresa Cantidad"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .6, 'center_y': .45}
+                        disabled:False if bt_insertar3.state=='down' else True
+
+                    Label:
+                        text: "Precio: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': .89}
+
+                    TextInput:
+                        id: ti_precio
+                        hint_text: "Ingresa Precio"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .6, 'center_y': .37}
+                        disabled:False if bt_insertar3.state=='down' else True
+
+                    Label:
+                        text: "Total: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': .81}
+
+                    TextInput:
+                        id: ti_total
+                        hint_text: '0'
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        input_filter: 'int'
+                        pos_hint: {'center_x': .6, 'center_y': .29}
+                        disabled: True
+
+            AccordionItem:
+                title:'USUARIOS'
+                background_normal: 'fondo22.jpg'
+                anim_func: 'in_expo'
+                background_selected: 'fondo22.jpg'
+
+                FloatLayout:
+                    AsyncImage:
+                        source: 'fondo1.jpg'
+                        size_hint: 2,1.5
+                        pos_hint: {'center_x':0.5, 'center_y': 0.5}
+
+                    Button:
+                        id:bt_catalogo
+                        size_hint: .06, .09
+                        text: 'Cat'
+                        pos_hint: {'center_x':.95, 'center_y': .93}
+                        background_normal: 'catalogo.png'
+
+                    ToggleButton:
+                        id:bt_actualizar
+                        size_hint: .06, .09
+                        text: 'Act'
+                        pos_hint: {'center_x':.89, 'center_y': .93}
+                        background_normal: 'update.png'
+
+                    ToggleButton:
+                        id:bt_borrar
+                        size_hint: .06, .09
+                        text: 'Bor'
+                        pos_hint: {'center_x':.83, 'center_y': .93}
+                        background_normal: 'delete.png'
+
+                    ToggleButton:
+                        id:bt_insertar
+                        size_hint: .06, .09
+                        text: 'Ins'
+                        pos_hint: {'center_x':.77, 'center_y': .93}
+                        background_normal: 'insert.png'
+
+                    Button:
+                        id: bt_inicio
+                        size_hint: .08, .07
+                        pos_hint: {'center_x':.94, 'center_y': .07}
+                        background_normal: 'inicio.png'
+                        on_press: app.root.menuP()
+
+                    Image:
+                        source: 'usuarios.png'
+                        size_hint: .3, .3
+                        pos_hint: {'center_x':.5, 'center_y':.75}
+
+                    Button:
+                        id: bt_aceptar
+                        size_hint: .07, .1
+                        pos_hint: {'center_x':.35, 'center_y': .17}
+                        background_normal: 'aceptar.png'
+                        on_press: self.parent.parent.parent.parent.parent.parent.parent.parent.validar4()
+                        disabled:False if bt_insertar.state=='down' or bt_borrar.state=='down' or bt_actualizar.state=='down' else True
+
+                    Button:
+                        id: bt_cancelar
+                        size_hint: .07, .09
+                        pos_hint: {'center_x':.55, 'center_y': .17}
+                        background_normal: 'cancelar.png'
+                        disabled:False if bt_insertar.state=='down' or bt_borrar.state=='down' or bt_actualizar.state=='down' else True
+                        on_press: self.parent.parent.parent.parent.parent.parent.parent.parent.limpiar()
+
+                    Label:
+                        text: "Usuario: "
+                        font_size: 18
+                        color: 0,0,0,3
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': 1.05}
+
+                    Spinner:
+                        id: sp_user
+                        text: "Ingresa Usuario"
+                        values:("Ingresa Usuario","1","2","3")
+                        background_color:1, 1, 1, 3
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .53}
+                        disabled:True if bt_insertar.state=='down' else False
+
+                    TextInput:
+                        id: ti_usuario
+                        hint_text: "Ingresa Usuario"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .53}
+                        disabled:False if bt_insertar.state=='down' else True
+
+                    Label:
+                        text: "Password: "
+                        color: 0,0,0,1
+                        font_size: 18
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': .97}
+
+                    TextInput:
+                        id: ti_password
+                        hint_text: "Ingresa Password"
+                        multiline: False
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .45}
+                        password: True
+                        disabled:False if bt_insertar.state=='down' or bt_actualizar.state=='down' else True
+
+                    Label:
+                        text: "Grupo: "
+                        font_size: 18
+                        color: 0,0,0,1
+                        text_size: self.width+50, self.height+50
+                        pos_hint: {'center_x': .78, 'center_y': .89}
+
+                    Spinner:
+                        id: sp_grupo
+                        text: "Elige Grupo"
+                        values:("Elige Grupo","1. Administradores","2. Vendedores")
+                        color: 0,0,0,1
+                        size_hint: .30,.045
+                        font_size: 15
+                        pos_hint: {'center_x': .6, 'center_y': .37}
+                        disabled:False if bt_insertar.state=='down'or bt_actualizar.state=='down' else True
+
+<CamClick>:
+    name: 'camClick'
+    canvas:
+        Color:
+            rgba: 1,1,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        FloatLayout:
+            Camera:
+                id: camera
+                resolution: (2160,3088)
+            ToggleButton:
+                text: 'Play'
+                size_hint: .1, .1
+                pos_hint: {'center_x':.3, 'center_y': .035}
+                on_press: camera.play = not camera.play
+                background_normal: 'play.png'
+            Button:
+                pos_hint: {'center_x':.45, 'center_y': .035}
+                size_hint: .1, .1
+                background_normal: 'camara.png'
+                on_press: self.parent.parent.parent.capture()
+            Button:
+                id: bt_inicio
+                size_hint: .07, .07
+                pos_hint: {'center_x':.94, 'center_y': .035}
+                background_normal: 'inicio.png'
+                on_press: app.root.menuP()
+            Button:
+                id: bt_cancelar
+                size_hint: .06, .075
+                pos_hint: {'center_x':.6, 'center_y': .035}
+                background_normal: 'cancelar.png'
+                on_press: app.root.opciones_mercancias()
